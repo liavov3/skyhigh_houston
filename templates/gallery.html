@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category | capitalize }}{% endblock %}
+
+{% block content %}
+<h1>{{ category | capitalize }} Collection</h1>
+
+<!-- Product Grid -->
+<div class="product-grid">
+    {% for item in items %}
+    <div class="product">
+        <img src="{{ url_for('static', filename='images/' + item) }}" alt="{{ item }}">
+        <div class="product-title">{{ item.split('.')[0] | capitalize }}</div>
+        <div class="product-price">$50.00</div>
+        <form onsubmit="return addToBag('{{ item.name }}', 50.00);">
+            <button type="submit">Add to Cart</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+
+<a href="{{ url_for('view_bag') }}" class="button">View Shopping Bag</a>
+{% endblock %}
+
+{% block script %}
+<script>
+    function addToBag(itemName, itemPrice) {
+        fetch('/add_to_bag', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ item_name: itemName, item_price: itemPrice }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showFlashMessage(`${itemName} added to bag successfully!`);
+            } else {
+                showFlashMessage('Failed to add item to bag.', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showFlashMessage('An error occurred.', 'error');
+        });
+
+        return false; // Prevent default form submission
+    }
+</script>
+{% endblock %}

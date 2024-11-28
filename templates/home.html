@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to Sky High Houton!{% endblock %}
+
+{% block content %}
+<div class="home-banner">
+    <h1>Welcome to Sky High Houton!</h1>
+    <p>Explore our psychedelic party collection below:</p>
+</div>
+
+<div class="gallery-preview">
+    <div class="gallery-item">
+        <img src="{{ url_for('static', filename='images/home1.png') }}" alt="Psychedelic Design">
+    </div>
+    <div class="gallery-item">
+        <img src="{{ url_for('static', filename='images/home2.png') }}" alt="Save the Date">
+    </div>
+    <div class="gallery-item">
+        <img src="{{ url_for('static', filename='images/home3.png') }}" alt="More Psychedelic Art">
+    </div>
+</div>
+{% endblock %}

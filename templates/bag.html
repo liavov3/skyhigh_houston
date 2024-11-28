@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Shopping Bag{% endblock %}
+
+{% block content %}
+<h1>Your Shopping Bag</h1>
+{% if shopping_bag %}
+<table class="shopping-bag">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in shopping_bag %}
+        <tr>
+            <td>
+                <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.name }}" style="width: 50px; height: 50px; margin-right: 10px;">
+                {{ item.name | capitalize }}
+            </td>
+            <td>${{ item.price }}</td>
+            <td>
+                <button class="remove-button" onclick="removeFromBag('{{ item.name }}')">Remove</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="total">
+    <strong>Total:</strong> ${{ total }}
+</div>
+<a href="{{ url_for('index') }}" class="button">Continue Shopping</a>
+{% else %}
+<p>Your shopping bag is empty. <a href="{{ url_for('index') }}">Start shopping</a>.</p>
+{% endif %}
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+<script>
+    function removeFromBag(itemName) {
+        console.log("Removing item:", itemName);  // Debug log
+        fetch('/remove_from_bag', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ item_name: itemName }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showFlashMessage(`${itemName} removed from bag successfully!`);
+                location.reload(); // Refresh to update the shopping bag
+            } else {
+                showFlashMessage('Failed to remove item.', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showFlashMessage('An error occurred.', 'error');
+        });
+    }
+</script>
+{% endblock %}

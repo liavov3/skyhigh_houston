@@ -1,0 +1,298 @@
+/* General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #7F00FF, #E100FF);
+  color: #fff;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+/* Navigation Bar Styling */
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: center;
+  background: #4B0082;
+  padding: 1em 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.navbar li a:hover {
+  color: #FFD700;
+}
+
+/* Bag Icon Styling */
+.nav-bag {
+  position: relative;
+  font-size: 1.5em;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-bag .fas {
+  font-size: 1.5em;
+}
+
+.bag-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: #FF4500;
+  color: white;
+  font-size: 0.8em;
+  padding: 0.3em 0.5em;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* Flash Message Styling */
+.flash {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #4CAF50; /* Green for success */
+  color: white;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-size: 1em;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.flash.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flash.error {
+  background: #f44336; /* Red for errors */
+}
+
+/* Shopping Bag Table Styling */
+.shopping-bag {
+  width: 90%;
+  margin: 2em auto;
+  border-collapse: collapse;
+  text-align: left;
+  background: white;
+  color: black;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.shopping-bag th, .shopping-bag td {
+  padding: 1em;
+  border-bottom: 1px solid #ddd;
+}
+
+.shopping-bag th {
+  background: #6200ea;
+  color: white;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.shopping-bag tr:hover td {
+  background: #f1f1f1;
+}
+
+/* Remove Button Styling */
+.remove-button {
+  padding: 0.5em 1em;
+  background: linear-gradient(90deg, #FF7E5F, #FFB199);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.remove-button:hover {
+  background: linear-gradient(90deg, #FFB199, #FF7E5F);
+  transform: scale(1.05);
+}
+
+.remove-button:active {
+  transform: scale(0.95);
+}
+
+/* Total Section */
+.total {
+  text-align: right;
+  margin: 1em auto;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: black;
+  width: 90%;
+}
+
+/* Continue Shopping Button */
+.button {
+  display: block;
+  text-align: center;
+  margin: 2em auto;
+  padding: 0.7em 2em;
+  background: linear-gradient(90deg, #FF7E5F, #FFB199);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1em;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.button:hover {
+  background: linear-gradient(90deg, #FFB199, #FF7E5F);
+  transform: scale(1.05);
+}
+
+/* Gallery Styling */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5em;
+  margin: 2em auto;
+  max-width: 1200px;
+  padding: 1em;
+}
+
+.product-grid .product {
+  text-align: center;
+  padding: 1em;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-grid .product:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.product-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.product-grid img:hover {
+  transform: scale(1.05);
+}
+
+.product-grid .product-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  margin: 0.5em 0;
+}
+
+.product-grid .product-price {
+  font-size: 1em;
+  color: #FF4500;
+  margin: 0.5em 0;
+}
+
+.product-grid button {
+  margin-top: 1em;
+  background: linear-gradient(90deg, #FF7E5F, #FFB199);
+  color: white;
+  padding: 0.7em 1.5em;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-grid button:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Home Banner Styling */
+.home-banner {
+  text-align: center;
+  padding: 2em 0;
+  background: linear-gradient(135deg, #8A2BE2, #4B0082);
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 2em;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.home-banner h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.home-banner p {
+  font-size: 1.2em;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Gallery Section Styling */
+.gallery-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5em;
+  margin: 2em auto;
+  max-width: 1200px;
+  padding: 1em;
+}
+
+.gallery-item {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+}

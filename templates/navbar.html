@@ -1,0 +1,12 @@
+<nav class="navbar">
+    <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('gallery', category='shirts') }}">Shirts</a></li>
+        <li><a href="{{ url_for('gallery', category='sweatshirts') }}">Sweatshirts</a></li>
+        <li><a href="{{ url_for('gallery', category='new') }}">New</a></li>
+        <li><a href="{{ url_for('view_bag') }}" class="nav-bag">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="bag-count">{{ session['shopping_bag'] | length if session['shopping_bag'] else 0 }}</span>
+        </a></li>
+    </ul>
+</nav>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sky High Houton{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Flash Message -->
+    <div id="flash-message" style="display: none;" class="flash"></div>
+
+    <!-- Navigation Bar -->
+    {% include 'navbar.html' %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Sky High Houton. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    {% block script %}
+    <script>
+        function showFlashMessage(message, type = 'success') {
+            const flashMessage = document.getElementById('flash-message');
+            flashMessage.textContent = message;
+            flashMessage.className = `flash ${type}`;
+            flashMessage.style.display = 'block';
+
+            setTimeout(() => {
+                flashMessage.style.display = 'none';
+            }, 3000); // Flash message disappears after 3 seconds
+        }
+    </script>
+    {% endblock %}
+</body>
+</html>

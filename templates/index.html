@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 style="text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);">
+    Welcome to the Psychedelic Party Store!
+</h1>
+<p style="font-size: 1.5em; margin-bottom: 1.5em;">
+    Unleash the groove, feel the vibe, and shop for the ultimate party gear.
+</p>
+<div class="image-gallery">
+    <img src="{{ url_for('static', filename='static/Back - 2024-11-20T155551.572.png') }}" alt="Weird Pic 1">
+    <img src="{{ url_for('static', filename='static/Back - 2024-11-20T155835.338.png') }}" alt="Weird Pic 2">
+    <img src="{{ url_for('static', filename='static/Front - 2024-11-20T153035.118.png') }}" alt="Weird Pic 3">
+</div>
+{% endblock %}
